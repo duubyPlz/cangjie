@@ -1,11 +1,19 @@
-.status {
-    background-color: red;
+body {
+    font-family: sans-serif;
 }
 
 .prompt {
-    background: red;
+    font-size: 60px;
+    margin: 0 45vw;
+    text-align: center;
 }
 
-body {
-    background: red;
+.input {
+    text-align: center;
+    font-size: 60px;
+    width: 98vw;
+}
+
+.status {
+    text-align: center;
 }
