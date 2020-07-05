@@ -69,6 +69,16 @@ class SpaghettiMonolithComponent extends React.Component {
     });
   }
 
+  makeWhitelistRegex = (ranges) => {
+    return new RegExp("[^" + ranges + "]", "g");
+  }
+
+  sanitise = (rawContent) => {
+    const whitelistRanges = "a-zA-Z0-9\u3400-\u4DB5\u4E00-\u9FCB\uF900-\uFA6A\u3130-\u318F\u1100-\u11FF\uA960-\uA97F\uD7B0-\uD7FF\uAC00-\uD7AF\u3040-\u309F\u30A0-\u30FF\u2E80-\u2FD5";
+    const whitelistRegex = this.makeWhitelistRegex(whitelistRanges);
+    return rawContent.replace(whitelistRegex, "");
+  }
+
   handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -113,7 +123,7 @@ class SpaghettiMonolithComponent extends React.Component {
   }
   
   handleChange = (e) => {
-    this.setState({content: e.target.value});
+    this.setState({content: this.sanitise(e.target.value)});
   }
 
   componentDidMount() {
