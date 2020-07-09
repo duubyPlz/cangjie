@@ -127,8 +127,23 @@ class SpaghettiMonolithComponent extends React.Component {
     this.setState({content: this.sanitise(e.target.value)});
   }
 
+  // Logs big5 codes to console
+  logCharsToCode = () => {
+    console.log("LOADING A MASSIVE LISt...");
+    console.log(massiveList.map((character) => {
+      const buf = iconv.encode(character, 'big5');
+      let big5Key = '';
+      for (const elem of buf) {
+        big5Key += elem.toString(16).toUpperCase();
+      }
+      return big5Key;
+    }).join("|"));
+  }
+
   componentDidMount() {
     this.setNextPrompt();
+
+    // this.logCharsToCode();
   }
 
   render() {
@@ -153,6 +168,8 @@ class SpaghettiMonolithComponent extends React.Component {
               )
               : null
           }
+        </div>
+        <div id='deleteme'>
         </div>
       </>
     );
