@@ -15,3 +15,11 @@ if __name__ == "__main__":
     print("ERRORS")
     print(errors)
 #echo "尸" | iconv -f utf-8 -t 
+
+'''
+TODO:
+    open big5Codes.txt
+    split by '|'
+    for each entry, attach to url
+    access url & save file
+'''
